@@ -284,10 +284,6 @@ void Logger::init(const char *file_name, const char *file_path,
     
     if(!m_is_init) {
         m_sync_interval = sync_interval;
-        // for(int i = 0; i < 100000; i++) {
-        //     m_buffer.push_back("");
-        // }
-
         m_async_logger = std::make_shared<AsyncLogger>(file_name, file_path, max_size);
 
         ::signal(SIGSEGV, CoredumpHandler);
