@@ -50,7 +50,7 @@ void testCoroutinePool() {
 
 int main() {
     initLog("test_log");
-    // LOG_INFO << "main start !";
+    LOG_INFO << "main start !";
     cout << "=== main start" << endl;
 
     /* testCoroutine(); */

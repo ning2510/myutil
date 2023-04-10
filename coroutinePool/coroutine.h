@@ -1,7 +1,6 @@
 #ifndef _COROUTINE_H
 #define _COROUTINE_H
 
-#include <iostream>
 #include <memory>
 #include <functional>
 

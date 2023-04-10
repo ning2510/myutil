@@ -1,7 +1,6 @@
 #ifndef _MEMORY_H
 #define _MEMORY_H
 
-#include <iostream>
 #include <memory>
 #include <atomic>
 #include <vector>

@@ -29,7 +29,6 @@ CoroutinePool::CoroutinePool(int pool_size, int stack_size)
 }
 
 CoroutinePool::~CoroutinePool() {
-    std::cout << "~CoroutinePool" << std::endl;
     for(auto m : m_memory_pool) {
         m.reset();
     }

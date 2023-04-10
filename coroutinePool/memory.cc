@@ -21,7 +21,6 @@ Memory::Memory(int block_size, int block_count)
 }
 
 Memory::~Memory() {
-    std::cout << "~Memory" << std::endl;
     if(!m_start || m_start == (void *)-1) {
         return ;
     }
