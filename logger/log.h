@@ -98,7 +98,9 @@ public:
     typedef std::shared_ptr<AsyncLogger> ptr;
 
     AsyncLogger(const char *file_name, const char *file_path, int max_size);
-    ~AsyncLogger() {}
+    ~AsyncLogger() {
+        pthread_cond_destroy(&m_cond);
+    }
 
     void push(std::vector<std::string> &buffer);
     void flush();
@@ -132,13 +134,9 @@ class Logger {
 public:
     typedef std::shared_ptr<Logger> ptr;
 
-    Logger() {}
+    Logger() : m_is_init(false), m_stop(false) {}
     ~Logger() {
         stop();
-        
-        /* tmp method */
-        join();
-
         m_async_logger->join();
     }
 

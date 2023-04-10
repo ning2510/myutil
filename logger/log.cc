@@ -151,6 +151,8 @@ AsyncLogger::AsyncLogger(const char *file_name, const char *file_path, int max_s
 
     rt = ::sem_wait(&m_sem);
     assert(rt == 0);
+
+    sem_destroy(&m_sem);
 }
 
 void AsyncLogger::push(std::vector<std::string> &buffer) {
@@ -194,10 +196,15 @@ void *AsyncLogger::execute(void *arg) {
         while(ptr->m_tasks.empty() && !ptr->m_stop) {
             ::pthread_cond_wait(&ptr->m_cond, &ptr->m_mutex);
         }
+        bool is_stop = ptr->m_stop;
+        if(is_stop && ptr->m_tasks.empty()) {
+            ::pthread_mutex_unlock(&ptr->m_mutex);
+            break;
+        }
+
         std::vector <std::string> tmp;
         tmp.swap(ptr->m_tasks.front());
         ptr->m_tasks.pop();
-        bool is_stop = ptr->m_stop;
 
         ::pthread_mutex_unlock(&ptr->m_mutex);
 
@@ -232,14 +239,11 @@ void *AsyncLogger::execute(void *arg) {
 
             ptr->m_file_handle = ::fopen(full_file_name.c_str(), "a");
             if(ptr->m_file_handle == nullptr) {
-                ::fclose(ptr->m_file_handle);
                 printf("open fail errno = %d reason = %s \n", errno, strerror(errno));
                 exit(-1);
             }
             ptr->m_need_reopen = false;
         }
-
-        int size = ::ftell(ptr->m_file_handle);
 
         if(::ftell(ptr->m_file_handle) > ptr->m_max_size) {
             ::fclose(ptr->m_file_handle);
@@ -252,7 +256,6 @@ void *AsyncLogger::execute(void *arg) {
         
             ptr->m_file_handle = ::fopen(full_file_name.c_str(), "a");
             if(ptr->m_file_handle == nullptr) {
-                ::fclose(ptr->m_file_handle);
                 printf("open fail errno = %d reason = %s \n", errno, strerror(errno));
                 exit(-1);
             }
@@ -269,9 +272,10 @@ void *AsyncLogger::execute(void *arg) {
 
         if(is_stop) break;
     }
-
-    if(!ptr->m_file_handle) {
+    
+    if (ptr->m_file_handle) {
         ::fclose(ptr->m_file_handle);
+        ptr->m_file_handle = nullptr;
     }
 
     return nullptr;
@@ -322,7 +326,7 @@ void Logger::stop() {
     m_stop = true;
 
     loopFunc();
-
+    join();
     m_async_logger->stop();
     m_async_logger->flush();
 }
