@@ -7,7 +7,7 @@
 namespace util {
 
 template <class T>
-class ScopedLockImpl {
+struct ScopedLockImpl {
 public:
     ScopedLockImpl(T &mutex) : m_mutex(mutex) {
         m_mutex.lock();
@@ -15,7 +15,7 @@ public:
     }
 
     ~ScopedLockImpl() {
-        m_mutex.unlock();
+        unlock();
     }
 
     void lock() {
@@ -39,7 +39,7 @@ private:
 
 
 template <class T>
-class ReadScopedLockImpl {
+struct ReadScopedLockImpl {
 public:
     ReadScopedLockImpl(T &mutex) : m_mutex(mutex) {
         m_mutex.rdlock();
@@ -47,7 +47,7 @@ public:
     }
 
     ~ReadScopedLockImpl() {
-        m_mutex.unlock();
+        unlock();
     }
 
     void lock() {
@@ -71,7 +71,7 @@ private:
 
 
 template <class T>
-class WriteScopedLockImpl {
+struct WriteScopedLockImpl {
 public:
     WriteScopedLockImpl(T &mutex) : m_mutex(mutex) {
         m_mutex.wrlock();
@@ -79,7 +79,7 @@ public:
     }
 
     ~WriteScopedLockImpl() {
-        m_mutex.unlock();
+        unlock();
     }
 
     void lock() {
