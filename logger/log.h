@@ -173,6 +173,8 @@ private:
     AsyncLogger::ptr m_async_logger;
 };
 
+void Exit(int code);
+
 }   // namespace util
 
 #endif
