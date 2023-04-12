@@ -349,6 +349,11 @@ void Logger::push(const std::string &msg) {
     ::pthread_mutex_unlock(&m_mutex);
 }
 
+void Exit(int code) {
+    g_logger->stop();
+    g_logger->getAsyncLogger()->join();
 
+    _exit(code);
+}
 
 }   // namespace util
