@@ -45,7 +45,7 @@ private:
     sockaddr_in m_addr;
 };
 
-class UnixDomainAddress : NetAddress {
+class UnixDomainAddress : public NetAddress {
 public:
     UnixDomainAddress(const std::string &path);
     UnixDomainAddress(sockaddr_un addr);
