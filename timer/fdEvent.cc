@@ -164,6 +164,11 @@ FdEventContainer::FdEventContainer(int size) {
 }
 
 FdEvent::ptr FdEventContainer::getFdEvent(int fd) {
+    if(fd < 0) {
+        LOG_ERROR << "FdEventContainer::getFdEvent - fd is invalid";
+        return nullptr;
+    }
+
     RWMutex::ReadLock rlock(m_mutex);
     if(fd < m_fds.size()) {
         FdEvent::ptr tmp = m_fds[fd];
