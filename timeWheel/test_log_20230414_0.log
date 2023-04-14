@@ -1,0 +1,150 @@
+[2023-04-14 16:42:32.480284]	[DEBUG]	[15450]	[15450]	[../netAddress/netAddress.cc:12]	create ipv4 address succ [0.0.0.0:9000]
+[2023-04-14 16:42:32.480446]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:54]	m_epfd = 3, m_wake_fd = 4
+[2023-04-14 16:42:32.480551]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.480687]	[DEBUG]	[15450]	[15453]	[../timer/reactor.cc:54]	m_epfd = 5, m_wake_fd = 6
+[2023-04-14 16:42:32.480727]	[DEBUG]	[15450]	[15453]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.480772]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.480863]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.480952]	[DEBUG]	[15450]	[15454]	[../timer/reactor.cc:54]	m_epfd = 7, m_wake_fd = 8
+[2023-04-14 16:42:32.480990]	[DEBUG]	[15450]	[15454]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.481032]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.481113]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.481182]	[DEBUG]	[15450]	[15455]	[../timer/reactor.cc:54]	m_epfd = 9, m_wake_fd = 10
+[2023-04-14 16:42:32.481219]	[DEBUG]	[15450]	[15455]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.481253]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.481380]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.481464]	[DEBUG]	[15450]	[15456]	[../timer/reactor.cc:54]	m_epfd = 11, m_wake_fd = 12
+[2023-04-14 16:42:32.481502]	[DEBUG]	[15450]	[15456]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.481545]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.481627]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.481714]	[DEBUG]	[15450]	[15457]	[../timer/reactor.cc:54]	m_epfd = 13, m_wake_fd = 14
+[2023-04-14 16:42:32.481754]	[DEBUG]	[15450]	[15457]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.481794]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.481869]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.481936]	[DEBUG]	[15450]	[15458]	[../timer/reactor.cc:54]	m_epfd = 15, m_wake_fd = 16
+[2023-04-14 16:42:32.481962]	[DEBUG]	[15450]	[15458]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.481993]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.482066]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.482117]	[DEBUG]	[15450]	[15459]	[../timer/reactor.cc:54]	m_epfd = 17, m_wake_fd = 18
+[2023-04-14 16:42:32.482137]	[DEBUG]	[15450]	[15459]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.482153]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.482211]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.482268]	[DEBUG]	[15450]	[15460]	[../timer/reactor.cc:54]	m_epfd = 25, m_wake_fd = 31
+[2023-04-14 16:42:32.482285]	[DEBUG]	[15450]	[15460]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.482304]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.482368]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.482535]	[DEBUG]	[15450]	[15461]	[../timer/reactor.cc:54]	m_epfd = 35, m_wake_fd = 37
+[2023-04-14 16:42:32.482569]	[DEBUG]	[15450]	[15461]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.482605]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.482699]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:25]	semaphore begin to wait until new thread frinish IOThread::main() to init
+[2023-04-14 16:42:32.482753]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:54]	m_epfd = 38, m_wake_fd = 39
+[2023-04-14 16:42:32.482774]	[DEBUG]	[15450]	[15462]	[../tcp/ioThread.cc:57]	finish iothread init, now post semaphore
+[2023-04-14 16:42:32.482802]	[DEBUG]	[15450]	[15450]	[../tcp/ioThread.cc:29]	semaphore wait end, finish create io thread
+[2023-04-14 16:42:32.482838]	[INFO]	[15450]	[15450]	[../timer/timer.cc:24]	timer fd = 40
+[2023-04-14 16:42:32.482858]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:340]	Thread [15450], epoll_ctl add succ, fd[40]
+[2023-04-14 16:42:32.482865]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129540746
+[2023-04-14 16:42:32.482874]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:54]	need reset timer
+[2023-04-14 16:42:32.482897]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129549746
+[2023-04-14 16:42:32.482927]	[DEBUG]	[15450]	[15450]	[../tcp/tcpServer.cc:30]	create listenfd success, listenfd = 41
+[2023-04-14 16:42:32.483411]	[INFO]	[15450]	[15450]	[../tcp/tcpServer.cc:113]	TcpServer::start - resume accept coroutine
+[2023-04-14 16:42:32.483436]	[DEBUG]	[15450]	[15450]	[../coroutineHook/coroutineHook.cc:35]	this is hook accept
+[2023-04-14 16:42:32.484376]	[INFO]	[15450]	[15450]	[../timer/fdEvent.cc:100]	fd set nonblock success
+[2023-04-14 16:42:32.484409]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:340]	Thread [15450], epoll_ctl add succ, fd[41]
+[2023-04-14 16:42:32.484423]	[DEBUG]	[15450]	[15450]	[../coroutineHook/coroutineHook.cc:52]	accept func to yield
+[2023-04-14 16:42:32.484476]	[DEBUG]	[15450]	[15455]	[../tcp/ioThread.cc:64]	IOThread 15455 begin to loop
+[2023-04-14 16:42:32.484487]	[DEBUG]	[15450]	[15455]	[../timer/reactor.cc:144]	Thread [15455], reactor loop start
+[2023-04-14 16:42:32.484491]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:144]	Thread [15450], reactor loop start
+[2023-04-14 16:42:32.484496]	[DEBUG]	[15450]	[15457]	[../tcp/ioThread.cc:64]	IOThread 15457 begin to loop
+[2023-04-14 16:42:32.484512]	[DEBUG]	[15450]	[15461]	[../tcp/ioThread.cc:64]	IOThread 15461 begin to loop
+[2023-04-14 16:42:32.484512]	[DEBUG]	[15450]	[15459]	[../tcp/ioThread.cc:64]	IOThread 15459 begin to loop
+[2023-04-14 16:42:32.484518]	[DEBUG]	[15450]	[15457]	[../timer/reactor.cc:144]	Thread [15457], reactor loop start
+[2023-04-14 16:42:32.484525]	[DEBUG]	[15450]	[15461]	[../timer/reactor.cc:144]	Thread [15461], reactor loop start
+[2023-04-14 16:42:32.484525]	[DEBUG]	[15450]	[15459]	[../timer/reactor.cc:144]	Thread [15459], reactor loop start
+[2023-04-14 16:42:32.484528]	[DEBUG]	[15450]	[15460]	[../tcp/ioThread.cc:64]	IOThread 15460 begin to loop
+[2023-04-14 16:42:32.484536]	[DEBUG]	[15450]	[15460]	[../timer/reactor.cc:144]	Thread [15460], reactor loop start
+[2023-04-14 16:42:32.484529]	[DEBUG]	[15450]	[15453]	[../tcp/ioThread.cc:64]	IOThread 15453 begin to loop
+[2023-04-14 16:42:32.484497]	[DEBUG]	[15450]	[15456]	[../tcp/ioThread.cc:64]	IOThread 15456 begin to loop
+[2023-04-14 16:42:32.484583]	[DEBUG]	[15450]	[15456]	[../timer/reactor.cc:144]	Thread [15456], reactor loop start
+[2023-04-14 16:42:32.484547]	[DEBUG]	[15450]	[15462]	[../tcp/ioThread.cc:64]	IOThread 15462 begin to loop
+[2023-04-14 16:42:32.484584]	[DEBUG]	[15450]	[15453]	[../timer/reactor.cc:144]	Thread [15453], reactor loop start
+[2023-04-14 16:42:32.484604]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:144]	Thread [15462], reactor loop start
+[2023-04-14 16:42:32.484539]	[DEBUG]	[15450]	[15458]	[../tcp/ioThread.cc:64]	IOThread 15458 begin to loop
+[2023-04-14 16:42:32.484616]	[DEBUG]	[15450]	[15458]	[../timer/reactor.cc:144]	Thread [15458], reactor loop start
+[2023-04-14 16:42:32.484538]	[DEBUG]	[15450]	[15454]	[../tcp/ioThread.cc:64]	IOThread 15454 begin to loop
+[2023-04-14 16:42:32.484632]	[DEBUG]	[15450]	[15454]	[../timer/reactor.cc:144]	Thread [15454], reactor loop start
+[2023-04-14 16:42:33.483003]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15450
+[2023-04-14 16:42:33.483050]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:227]	epoll timer event, thread id = 15450
+[2023-04-14 16:42:33.483063]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:232]	fd = 40, m_timer_fd = 40, now time = 2129540747
+[2023-04-14 16:42:33.483074]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:116]	Timer::onTimer is executed
+[2023-04-14 16:42:33.483104]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129541747
+[2023-04-14 16:42:33.483128]	[DEBUG]	[15450]	[15450]	[timeWheel.cc:31]	TimeWhhel loop
+[2023-04-14 16:42:33.483140]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:153]	Timer::onTimer is end
+[2023-04-14 16:42:34.163051]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15450
+[2023-04-14 16:42:34.163084]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:208]	fir_cor is not null, so fir_cor execute, threa id = 15450
+[2023-04-14 16:42:34.163116]	[DEBUG]	[15450]	[15450]	[../coroutineHook/coroutineHook.cc:54]	accept func yield back, now to call sys accept
+[2023-04-14 16:42:34.163133]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:340]	Thread [15450], epoll_ctl add succ, fd[41]
+[2023-04-14 16:42:34.163186]	[DEBUG]	[15450]	[15450]	[../netAddress/netAddress.cc:43]	create ipv4 address succ [127.0.0.1:57398]
+[2023-04-14 16:42:34.163202]	[INFO]	[15450]	[15450]	[../tcp/tcpServer.cc:81]	New client accepted success, acceptfd = 43
+[2023-04-14 16:42:34.163209]	[INFO]	[15450]	[15450]	[../tcp/tcpServer.cc:128]	new client, accept fd = 43
+[2023-04-14 16:42:34.163251]	[DEBUG]	[15450]	[15450]	[../tcp/tcpConnection.cc:28]	succ create tcp connection state[2], fd = 43
+[2023-04-14 16:42:34.163309]	[INFO]	[15450]	[15450]	[../tcp/tcpServer.cc:135]	new TcpConnection create success, io thread id = 15453, io thread index = 0, now tcp_counts = 1
+[2023-04-14 16:42:34.163321]	[DEBUG]	[15450]	[15450]	[../coroutineHook/coroutineHook.cc:35]	this is hook accept
+[2023-04-14 16:42:34.163331]	[DEBUG]	[15450]	[15450]	[../timer/fdEvent.cc:93]	fd already set nonblock
+[2023-04-14 16:42:34.163341]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15462
+[2023-04-14 16:42:34.163358]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:340]	Thread [15450], epoll_ctl add succ, fd[41]
+[2023-04-14 16:42:34.163367]	[DEBUG]	[15450]	[15450]	[../coroutineHook/coroutineHook.cc:52]	accept func to yield
+[2023-04-14 16:42:34.163367]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:191]	epoll wake up, fd = [39], thread id = 15462
+[2023-04-14 16:42:34.163379]	[DEBUG]	[15450]	[15450]	[timeWheel.cc:26]	TimeWheel fresh
+[2023-04-14 16:42:34.163393]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15450
+[2023-04-14 16:42:34.163402]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:191]	epoll wake up, fd = [4], thread id = 15450
+[2023-04-14 16:42:34.163415]	[DEBUG]	[15450]	[15462]	[../tcp/tcpConnection.cc:74]	TcpConnection::MainServerLoopCorFunc input()
+[2023-04-14 16:42:34.163425]	[DEBUG]	[15450]	[15462]	[../coroutineHook/coroutineHook.cc:120]	this is hook read
+[2023-04-14 16:42:34.163437]	[INFO]	[15450]	[15462]	[../timer/fdEvent.cc:100]	fd set nonblock success
+[2023-04-14 16:42:34.163459]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:340]	Thread [15462], epoll_ctl add succ, fd[43]
+[2023-04-14 16:42:34.163472]	[DEBUG]	[15450]	[15462]	[../coroutineHook/coroutineHook.cc:137]	read func to yield
+[2023-04-14 16:42:42.482254]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15450
+[2023-04-14 16:42:42.482305]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:227]	epoll timer event, thread id = 15450
+[2023-04-14 16:42:42.482320]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:232]	fd = 40, m_timer_fd = 40, now time = 2129549746
+[2023-04-14 16:42:42.482330]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:116]	Timer::onTimer is executed
+[2023-04-14 16:42:42.482368]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129550746
+[2023-04-14 16:42:42.482379]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129559746
+[2023-04-14 16:42:42.482399]	[DEBUG]	[15450]	[15450]	[timeWheel.cc:31]	TimeWhhel loop
+[2023-04-14 16:42:42.482416]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:153]	Timer::onTimer is end
+[2023-04-14 16:42:42.494615]	[DEBUG]	[15450]	[15455]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15455
+[2023-04-14 16:42:42.494634]	[DEBUG]	[15450]	[15457]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15457
+[2023-04-14 16:42:42.494645]	[DEBUG]	[15450]	[15459]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15459
+[2023-04-14 16:42:42.494657]	[DEBUG]	[15450]	[15461]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15461
+[2023-04-14 16:42:42.494672]	[DEBUG]	[15450]	[15460]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15460
+[2023-04-14 16:42:42.494690]	[DEBUG]	[15450]	[15458]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15458
+[2023-04-14 16:42:42.494707]	[DEBUG]	[15450]	[15453]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15453
+[2023-04-14 16:42:42.494708]	[DEBUG]	[15450]	[15456]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15456
+[2023-04-14 16:42:42.494746]	[DEBUG]	[15450]	[15454]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15454
+[2023-04-14 16:42:44.173591]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15462
+[2023-04-14 16:42:52.482519]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15450
+[2023-04-14 16:42:52.482566]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:227]	epoll timer event, thread id = 15450
+[2023-04-14 16:42:52.482578]	[DEBUG]	[15450]	[15450]	[../timer/reactor.cc:232]	fd = 40, m_timer_fd = 40, now time = 2129559746
+[2023-04-14 16:42:52.482588]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:116]	Timer::onTimer is executed
+[2023-04-14 16:42:52.482624]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129560746
+[2023-04-14 16:42:52.482636]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:38]	addTimerEvent arrive_time = 2129569746
+[2023-04-14 16:42:52.482655]	[DEBUG]	[15450]	[15450]	[timeWheel.cc:31]	TimeWhhel loop
+[2023-04-14 16:42:52.482670]	[INFO]	[15450]	[15450]	[../tcp/tcpConnection.cc:49]	TcpConnection shutdown, io thread id = 15453
+[2023-04-14 16:42:52.482678]	[INFO]	[15450]	[15450]	[../tcp/tcpConnection.cc:57]	shutdown conn[127.0.0.1:57398], fd = 43
+[2023-04-14 16:42:52.482777]	[DEBUG]	[15450]	[15450]	[../timer/timer.cc:153]	Timer::onTimer is end
+[2023-04-14 16:42:52.482853]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:184]	epoll_wait rt = 1, thread id = 15462
+[2023-04-14 16:42:52.482880]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:208]	fir_cor is not null, so fir_cor execute, threa id = 15462
+[2023-04-14 16:42:52.482897]	[DEBUG]	[15450]	[15462]	[../coroutineHook/coroutineHook.cc:139]	read func yield back, now to call sys read
+[2023-04-14 16:42:52.482911]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:340]	Thread [15462], epoll_ctl add succ, fd[43]
+[2023-04-14 16:42:52.482929]	[DEBUG]	[15450]	[15462]	[../tcp/tcpConnection.cc:104]	read hook rt = 0
+[2023-04-14 16:42:52.482936]	[DEBUG]	[15450]	[15462]	[../tcp/tcpConnection.cc:108]	m_read_buffer size = 1032, prepend size = 8
+[2023-04-14 16:42:52.482951]	[DEBUG]	[15450]	[15462]	[../timer/reactor.cc:359]	Thread [15462], del succ, fd[43]
+[2023-04-14 16:42:52.482984]	[DEBUG]	[15450]	[15462]	[../tcp/tcpConnection.cc:135]	peer close, now yield current coroutine, wait main thread clear this TcpConnection
+[2023-04-14 16:42:52.501413]	[DEBUG]	[15450]	[15454]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15454
+[2023-04-14 16:42:52.504769]	[DEBUG]	[15450]	[15455]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15455
+[2023-04-14 16:42:52.504790]	[DEBUG]	[15450]	[15458]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15458
+[2023-04-14 16:42:52.504812]	[DEBUG]	[15450]	[15456]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15456
+[2023-04-14 16:42:52.504808]	[DEBUG]	[15450]	[15453]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15453
+[2023-04-14 16:42:52.504793]	[DEBUG]	[15450]	[15461]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15461
+[2023-04-14 16:42:52.504790]	[DEBUG]	[15450]	[15459]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15459
+[2023-04-14 16:42:52.504884]	[DEBUG]	[15450]	[15457]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15457
+[2023-04-14 16:42:52.504821]	[DEBUG]	[15450]	[15460]	[../timer/reactor.cc:184]	epoll_wait rt = 0, thread id = 15460
+[2023-04-14 16:42:59.921366]	[ERROR]	[15450]	[15450]	[../logger/log.cc:29]	progress received invalid signal, will exit
