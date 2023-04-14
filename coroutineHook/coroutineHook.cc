@@ -32,6 +32,7 @@ void toEpoll(FdEvent::ptr fd_event, IOEvent events) {
 }
 
 int accept_hook(int sockfd, struct sockaddr *addr, socklen_t *addrlen) {
+    LOG_DEBUG << "this is hook accept";
     if(Coroutine::IsMainCoroutine()) {
         LOG_DEBUG << "hook disable, call sys accept func";
         return g_sys_accept_fun(sockfd, addr, addrlen);
@@ -58,6 +59,7 @@ int accept_hook(int sockfd, struct sockaddr *addr, socklen_t *addrlen) {
 }
 
 int connect_hook(int sockfd, const struct sockaddr *addr, socklen_t addrlen) {
+    LOG_DEBUG << "this is hook connect";
     if(Coroutine::IsMainCoroutine()) {
         LOG_DEBUG << "hook disable, call sys connect func";
         g_sys_connect_fun(sockfd, addr, addrlen);
@@ -115,6 +117,7 @@ int connect_hook(int sockfd, const struct sockaddr *addr, socklen_t addrlen) {
 }
 
 ssize_t read_hook(int fd, void *buf, size_t count) {
+    LOG_DEBUG << "this is hook read";
     if(Coroutine::IsMainCoroutine()) {
         LOG_DEBUG << "hook disable, call sys read func";
         return g_sys_read_fun(fd, buf, count);
@@ -142,6 +145,7 @@ ssize_t read_hook(int fd, void *buf, size_t count) {
 }
 
 ssize_t write_hook(int fd, const void *buf, size_t count) {
+    LOG_DEBUG << "this is hook write";
     if(Coroutine::IsMainCoroutine()) {
         LOG_DEBUG << "hook disable, call sys write func";
         return g_sys_write_fun(fd, buf, count);
