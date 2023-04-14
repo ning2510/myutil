@@ -33,7 +33,7 @@ Reactor::Reactor()
       m_timer(nullptr) {
 
     if(t_reactor_ptr != nullptr) {
-        LOG_ERROR << "this thread has already create a reactor";
+        LOG_ERROR << "this thread[" << m_tid << "] has already create a reactor";
         Exit(0);
     }
 
@@ -141,7 +141,7 @@ void Reactor::wakeup() {
 }
 
 void Reactor::loop() {
-    LOG_DEBUG << "reactor loop start";
+    LOG_DEBUG << "Thread [" << m_tid << "], reactor loop start";
     assert(isInLoopThread());
     assert(!m_is_looping);
 
@@ -181,14 +181,14 @@ void Reactor::loop() {
         }
 
         int rt = ::epoll_wait(m_epfd, re_events, MAX_EVENTS, t_max_epoll_timeout);
-        LOG_INFO << "epoll_wait rt = " << rt;
+        LOG_DEBUG << "epoll_wait rt = " << rt << ", thread id = " << m_tid;
         if(rt < 0) {
-            LOG_ERROR << "epoll_wait error, skip, errno=" << strerror(errno);
+            LOG_ERROR << "epoll_wait error, thread id = " << m_tid << ", errno = " << strerror(errno);
         } else {
             for(int i = 0; i < rt; i++) {
                 epoll_event event = re_events[i];
                 if(event.data.fd == m_wake_fd && (event.events & READ)) {
-                    LOG_DEBUG << "epoll wake up, fd=[" << m_wake_fd << "]";
+                    LOG_DEBUG << "epoll wake up, fd = [" << m_wake_fd << "], thread id = " << m_tid;
                     char buf[8];
                     while(1) {
                         if((g_sys_read_fun(m_wake_fd, buf, 8) == -1) && errno == EAGAIN) {
@@ -200,23 +200,23 @@ void Reactor::loop() {
                     if(ptr != nullptr) {
                         int fd = ptr->getFd();
                         if(!(event.events & EPOLLIN && !(event.events & EPOLLOUT))) {
-                            LOG_ERROR << "socket [" << fd << "] occur other unknow event:[" << event.events << "], need unregister this socket";
+                            LOG_ERROR << "socket [" << fd << "] occur other unknow event:[" << event.events << "], need unregister this socket, thread id =" << m_tid;
                             delEventInLoopThread(fd);
                         } else {
                             if(ptr->getCoroutine()) {
                                 if(!fir_cor) {
-                                    LOG_DEBUG << "fir_cor is null, so fir_cor execute";
+                                    LOG_DEBUG << "fir_cor is not null, so fir_cor execute, threa id = " << m_tid;
                                     fir_cor = ptr->getCoroutine();
                                     continue;
                                 }
 
                                 if(m_reactor_type == SubReactor) {
-                                    LOG_DEBUG << "reactor type is SubReactor";
+                                    LOG_DEBUG << "reactor type is SubReactor, thread id = " << m_tid;
                                     delEventInLoopThread(fd);
                                     ptr->setReactor(nullptr);
                                     CoroutineTaskQueue::GetCoroutineTaskQueue()->push(ptr);
                                 } else {
-                                    LOG_DEBUG << "reactor type is MainReactor";
+                                    LOG_DEBUG << "reactor type is MainReactor, thread id = " << m_tid;
                                     Coroutine::Resume(ptr->getCoroutine());
                                     if(fir_cor) {
                                         fir_cor = nullptr;
@@ -224,7 +224,7 @@ void Reactor::loop() {
                                 }
 
                             } else {
-                                LOG_DEBUG << "epoll timer event";
+                                LOG_DEBUG << "epoll timer event, thread id = " << m_tid;
                                 std::function<void()> read_callback;
                                 std::function<void()> write_callback;
                                 read_callback = ptr->getCallBack(READ);
@@ -262,14 +262,16 @@ void Reactor::loop() {
         }
 
         for(auto it = tmp_add.begin(); it != tmp_add.end(); it++) {
+            LOG_DEBUG << "Thread [" << m_tid << "], execute addEventInLoopThread";
             addEventInLoopThread(it->first, it->second);
         }
         for(auto it = tmp_del.begin(); it != tmp_del.end(); it++) {
+            LOG_DEBUG << "Thread [" << m_tid << "], execute delEventInLoopThread";
             delEventInLoopThread(*it);
         }
     }
 
-    LOG_DEBUG << "reactor loop end";
+    LOG_DEBUG << "Thread [" << m_tid << "], reactor loop end";
     m_is_looping = false;
 }
 
@@ -303,7 +305,7 @@ void Reactor::addWakeupFd() {
     event.events = EPOLLIN;
 
     if(::epoll_ctl(m_epfd, op, m_wake_fd, &event) != 0) {
-        LOG_ERROR << "epoo_ctl error, fd[" << m_wake_fd << "], errno=" << errno << ", err=" << strerror(errno);
+        LOG_ERROR << "Thread [" << m_tid << "], epoo_ctl error, fd[" << m_wake_fd << "], errno = " << errno << ", err = " << strerror(errno);
     }
 
     m_fds.push_back(m_wake_fd);
@@ -326,14 +328,16 @@ void Reactor::addEventInLoopThread(int fd, epoll_event event) {
     }
 
     if(::epoll_ctl(m_epfd, op, fd, &event) != 0) {
-        LOG_ERROR << "epoll_ctl error, fd[" << fd << "], sys errinfo = " << strerror(errno);
+        LOG_ERROR << "Thread [" << m_tid << "], epoll_ctl [" << op << "] error, fd[" 
+                  << fd << "], errno = " << errno << ", sys errinfo = " << strerror(errno);
+        return ;
     }
 
     if(!isExist) {
         m_fds.push_back(fd);
     }
 
-    LOG_DEBUG << "epoll_ctl add succ, fd[" << fd << "]"; 
+    LOG_DEBUG << "Thread [" << m_tid << "], epoll_ctl add succ, fd[" << fd << "]"; 
 }
 
 void Reactor::delEventInLoopThread(int fd) {
@@ -342,17 +346,17 @@ void Reactor::delEventInLoopThread(int fd) {
     int op = EPOLL_CTL_DEL;
     auto it = std::find(m_fds.begin(), m_fds.end(), fd);
     if(it == m_fds.end()) {
-        LOG_ERROR << "fd[" << fd << "] not in this loop";
+        LOG_ERROR << "Thread [" << m_tid << "], fd[" << fd << "] not in this loop";
         return ;
     }
 
     if(::epoll_ctl(m_epfd, op, fd, nullptr) != 0) {
-        LOG_ERROR << "epoo_ctl error, fd[" << fd << "], sys errinfo = " << strerror(errno);
+        LOG_ERROR << "Thread ["<< m_tid<< "], epoo_ctl error, fd[" << fd << "], sys errinfo = " << strerror(errno);
     }
 
     m_fds.erase(it);
 
-    LOG_DEBUG << "del succ, fd[" << fd << "]"; 
+    LOG_DEBUG << "Thread ["<< m_tid<< "], del succ, fd[" << fd << "]"; 
 }
 
 
