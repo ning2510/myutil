@@ -34,6 +34,14 @@ public:
         return m_read_index;
     }
 
+    size_t getBufferSize() const { 
+        return m_buffer.size();
+    }
+
+    char *peek() {
+        return begin() + m_read_index;
+    }
+
     const char *peek() const {
         return begin() + m_read_index;
     }
