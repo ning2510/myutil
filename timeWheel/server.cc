@@ -14,7 +14,7 @@ int main() {
     string ip = "0.0.0.0";
     uint16_t port = 9000;
     IPAddress::ptr addr = make_shared<IPAddress>(ip, port);
-    TcpServer::ptr server = make_shared<TcpServer>(addr);
+    TcpServer::ptr server = make_shared<TcpServer>(addr, TCP);
 
     server->start();
 
