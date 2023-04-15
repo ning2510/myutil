@@ -5,7 +5,7 @@ namespace util {
 
 class AbstractData {
 public:
-    AbstractData() : decode_succ(false), encode_succ(false) {};
+    AbstractData() : decode_succ(false), encode_succ(false) {}
     virtual ~AbstractData() {}
 
     bool decode_succ;
