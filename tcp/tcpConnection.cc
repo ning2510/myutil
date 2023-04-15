@@ -16,7 +16,8 @@ TcpConnection::TcpConnection(TcpServer *tcp_server, IOThread *io_thread,
                               m_tcp_svr(tcp_server),
                               m_io_thread(io_thread),
                               m_reactor(nullptr),
-                              m_peer_addr(net_addr)  {
+                              m_peer_addr(net_addr),
+                              m_connection_type(ServerConnection)  {
     
     m_reactor = m_io_thread->getReactor();
     m_fd_event = FdEventContainer::GetFdContainer()->getFdEvent(fd);
@@ -173,9 +174,10 @@ void TcpConnection::execute() {
 
         m_codec->decode(m_read_buffer.get(), data.get());
         if(!data->decode_succ) {
-            LOG_ERROR << "it parse request error of fd = " << m_fd;
+            LOG_ERROR << "parse request error of fd = " << m_fd;
             break;
         }
+        LOG_INFO << "parse request success, fd = " << m_fd;
 
         if(m_connection_type == ServerConnection) {
             m_tcp_svr->getDispatcher()->dispatch(data.get(), this);

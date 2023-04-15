@@ -177,6 +177,24 @@ void TcpServer::ClearClientTimerFunc() {
     }
 }
 
+
+bool TcpServer::registerHttpServlet(const std::string& url_path, HttpServlet::ptr servlet) {
+    if(m_protocal_type == HTTP) {
+        if(servlet) {
+            dynamic_cast<HttpDispatcher *>(m_dispatcher.get())->registerServlet(url_path, servlet);
+            LOG_INFO << "register http servlet [" << url_path << "] success";
+        } else {
+            LOG_ERROR << "register http servlet error, servlet ptr is nullptr";
+            return false;
+        }
+    } else {
+        LOG_ERROR << "register http servlet error. Just Http protocal server need to resgister HttpServlet";
+        return false;
+    }
+
+    return true;
+}
+
 void TcpServer::addCoroutine(Coroutine::ptr cor) {
     m_main_reactor->addCoroutine(cor);
 }

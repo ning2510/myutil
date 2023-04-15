@@ -10,6 +10,7 @@
 #include "timeWheel.h"
 #include "coroutine.h"
 #include "netAddress.h"
+#include "httpServlet.h"
 #include "tcpConnection.h"
 #include "abstractDispatcher.h"
 
@@ -49,6 +50,7 @@ public:
     TcpConnection::ptr addClient(IOThread *io_thread, int fd);
     
     void freshTcpConnection(TimeWheel::TcpConnectionSlot::ptr slot);
+    bool registerHttpServlet(const std::string& url_path, HttpServlet::ptr servlet);
 
     NetAddress::ptr getPeerAddr();
     NetAddress::ptr getLocalAddr();
