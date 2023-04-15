@@ -37,6 +37,7 @@ class TestHttpServlet : public HttpServlet {
 
 };
 
+// http://127.0.0.1:9000/test?id=100
 int main() {
     initLog("test_log");
     string ip = "0.0.0.0";
