@@ -10,6 +10,7 @@ namespace util {
 
 enum ProtocalType {
     HTTP = 1,
+    TCP = 2,
 };
 
 class AbstractCodec {
