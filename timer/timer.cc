@@ -15,7 +15,7 @@ namespace util {
 int64_t getNowMs() {
     timeval val;
     ::gettimeofday(&val, nullptr);
-    int re = val.tv_sec * 1000 + val.tv_usec / 1000;    // ms
+    int64_t re = val.tv_sec * 1000 + val.tv_usec / 1000;    // ms
     return re;
 }
 
