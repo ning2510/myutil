@@ -1,6 +1,7 @@
 #include "log.h"
 #include "ioThread.h"
 #include "tcpServer.h"
+#include "httpRequest.h"
 #include "tcpConnection.h"
 #include "coroutineHook.h"
 #include "coroutinePool.h"
@@ -20,6 +21,7 @@ TcpConnection::TcpConnection(TcpServer *tcp_server, IOThread *io_thread,
     m_reactor = m_io_thread->getReactor();
     m_fd_event = FdEventContainer::GetFdContainer()->getFdEvent(fd);
     m_fd_event->setReactor(m_reactor);
+    m_codec = m_tcp_svr->getCodec();
 
     initBuffer(buff_size);
     m_loop_cor = GetCoroutinePool()->getCoroutineInstance();
@@ -152,20 +154,71 @@ void TcpConnection::input() {
 }
 
 void TcpConnection::execute() {
-    std::string msg = m_read_buffer->retrieveAllAsString();
-    LOG_INFO << "fd[" << m_fd << "] recv msg = " << msg;
+    /* Echo server */
+    if(m_tcp_svr->getProtocalType() == TCP) {
+        std::string msg = m_read_buffer->retrieveAllAsString();
+        LOG_DEBUG << "[TCP Protocal] fd[" << m_fd << "] recv msg = " << msg;
+        int rt = write_hook(m_fd, msg.c_str(), msg.size());
+        if(rt <= 0) {
+            LOG_ERROR << "write_hook error, err = " << strerror(errno);
+        }
+        return ;
+    }
 
-    // TODO ...
+    while(m_read_buffer->readableBytes() > 0) {
+        std::shared_ptr<AbstractData> data;
+        if(m_tcp_svr->getProtocalType() == HTTP) {
+            data = std::make_shared<HttpRequest>();
+        }
+
+        m_codec->decode(m_read_buffer.get(), data.get());
+        if(!data->decode_succ) {
+            LOG_ERROR << "it parse request error of fd = " << m_fd;
+            break;
+        }
+
+        if(m_connection_type == ServerConnection) {
+            m_tcp_svr->getDispatcher()->dispatch(data.get(), this);
+        }
+    }
 }
 
 void TcpConnection::output() {
-    std::string rep = "This system response msg";
-    int rt = write_hook(m_fd, rep.c_str(), rep.length() + 1);
-    if(rt <= 0) {
-        LOG_ERROR << "write_hook error, err = " << strerror(errno);
+    if(m_is_overtime) {
+        LOG_INFO << "over time, skip output progress";
+        return ;
     }
 
-    // TODO ...
+    while(true) {
+        TcpConnectionState state = getState();
+        if(state != Connected) {
+            break;
+        }
+
+        if(m_write_buffer->readableBytes() == 0) {
+            LOG_DEBUG << "write_buffer of fd[" << m_fd << "] no data to write, to yiled this coroutine";
+            break;
+        }
+
+        int total_size = m_write_buffer->readableBytes();
+        char *read_index = m_write_buffer->peek();
+        int rt = write_hook(m_fd, read_index, total_size);
+        if(rt <= 0) {
+            LOG_ERROR << "write empey, error = " << strerror(errno);
+        }
+
+        m_write_buffer->retrieve(rt);
+        LOG_INFO << "send [" << rt << "] bytes data to [" << m_peer_addr->toString() << "], fd [" << m_fd << "]";
+        if(m_write_buffer->readableBytes() <= 0) {
+            LOG_DEBUG << "send all data, now unregister write event and break";
+            break;
+        }
+
+        if(m_is_overtime) {
+            LOG_INFO << "over timer, now break write function";
+            break;
+        }
+    }
 }
 
 void TcpConnection::setState(const TcpConnectionState &state) { 

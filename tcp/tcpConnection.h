@@ -11,6 +11,7 @@
 #include "coroutine.h"
 #include "netAddress.h"
 #include "abstactSlot.h"
+#include "abstractCodec.h"
 
 namespace util {
 
@@ -52,6 +53,7 @@ public:
     void setState(const TcpConnectionState &state);
     TcpConnectionState getState();
 
+    AbstractCodec::ptr getCodec() { return m_codec; }
     Coroutine::ptr getCoroutine() { return m_loop_cor; }
     Buffer *getReadBuffer() { return m_read_buffer.get(); }
     Buffer *getWriteBuffer() { return m_write_buffer.get(); }
@@ -76,6 +78,7 @@ private:
     TcpConnectionState m_state;
     ConnectionType m_connection_type;
 
+    AbstractCodec::ptr m_codec;
     NetAddress::ptr m_peer_addr;
     Coroutine::ptr m_loop_cor;
     FdEvent::ptr m_fd_event;

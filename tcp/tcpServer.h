@@ -11,6 +11,7 @@
 #include "coroutine.h"
 #include "netAddress.h"
 #include "tcpConnection.h"
+#include "abstractDispatcher.h"
 
 namespace util {
 
@@ -39,7 +40,7 @@ class TcpServer {
 public:
     typedef std::shared_ptr<TcpServer> ptr;
 
-    TcpServer(NetAddress::ptr addr);
+    TcpServer(NetAddress::ptr addr, ProtocalType type = HTTP);
     ~TcpServer();
 
     void start();
@@ -54,6 +55,10 @@ public:
     TimeWheel::ptr getTimeWheel();
     IOThreadPool::ptr getIOThreadPool();
 
+    ProtocalType getProtocalType();
+    AbstractCodec::ptr getCodec();
+    AbstractDispatcher::ptr getDispatcher();
+
 private:
     void MainAcceptCorFunc();
     void ClearClientTimerFunc();
@@ -67,8 +72,11 @@ private:
     TcpAcceptor::ptr m_acceptor;
     Coroutine::ptr m_accept_cor;
 
-    IOThreadPool::ptr m_io_pool;
+    AbstractCodec::ptr m_codec;
+    AbstractDispatcher::ptr m_dispatcher;
+    ProtocalType m_protocal_type;
 
+    IOThreadPool::ptr m_io_pool;
     TimeWheel::ptr m_time_wheel;
 
     std::map<int, std::shared_ptr<TcpConnection>> m_clients;

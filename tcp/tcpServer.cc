@@ -4,8 +4,10 @@
 
 #include "log.h"
 #include "tcpServer.h"
+#include "httpCodec.h"
 #include "coroutinePool.h"
 #include "coroutineHook.h"
+#include "httpDispatcher.h"
 
 namespace util {
 
@@ -83,11 +85,19 @@ int TcpAcceptor::toAccept() {
 }
 
 
-TcpServer::TcpServer(NetAddress::ptr addr)
+TcpServer::TcpServer(NetAddress::ptr addr, ProtocalType type /*= HTTP*/)
     : m_tcp_counts(0),
       m_is_stop_accept(false),
       m_main_reactor(nullptr),
       m_addr(addr) {
+
+    if(type == HTTP) {
+        m_dispatcher = std::make_shared<HttpDispatcher>();
+        m_codec = std::make_shared<HttpCodec>();
+        m_protocal_type = HTTP;
+    } else if(type == TCP) {
+        m_protocal_type = TCP;
+    }
 
     m_main_reactor = Reactor::GetReactor();
     m_main_reactor->setReactorType(MainReactor);
@@ -185,6 +195,18 @@ TimeWheel::ptr TcpServer::getTimeWheel() {
 
 IOThreadPool::ptr TcpServer::getIOThreadPool() {
     return m_io_pool;
+}
+
+ProtocalType TcpServer::getProtocalType() {
+    return m_protocal_type;
+}
+
+AbstractCodec::ptr TcpServer::getCodec() {
+    return m_codec;
+}
+
+AbstractDispatcher::ptr TcpServer::getDispatcher() {
+    return m_dispatcher;
 }
 
 }   // namespace util
