@@ -63,7 +63,7 @@ LogLevel stringToLevel(const std::string &str) {
     if(str == "INFO") return LogLevel::INFO;
     if(str == "WARN") return LogLevel::WARN;
     if(str == "ERROR") return LogLevel::ERROR;
-    if(str == "NONE") return LogLevel::NONE;
+    return LogLevel::NONE;
 }
 
 std::string levelToString(LogLevel level) {
@@ -147,9 +147,6 @@ AsyncLogger::AsyncLogger(const char *file_name, const char *file_path, int max_s
     assert(rt == 0);
 
     rt = ::pthread_mutex_init(&m_mutex, nullptr);
-    assert(rt == 0);
-
-    rt = ::pthread_cond_init(&m_cond, nullptr);
     assert(rt == 0);
 
     rt = ::pthread_create(&m_thread, nullptr, &AsyncLogger::execute, this);
