@@ -100,6 +100,7 @@ public:
     AsyncLogger(const char *file_name, const char *file_path, int max_size);
     ~AsyncLogger() {
         pthread_cond_destroy(&m_cond);
+        pthread_mutex_destroy(&m_mutex);
     }
 
     void push(std::vector<std::string> &buffer);
@@ -134,10 +135,13 @@ class Logger {
 public:
     typedef std::shared_ptr<Logger> ptr;
 
-    Logger() : m_is_init(false), m_stop(false) {}
+    Logger() : m_is_init(false), m_stop(false) {
+        ::pthread_mutex_init(&m_mutex, nullptr);
+    }
     ~Logger() {
         stop();
         m_async_logger->join();
+        ::pthread_mutex_destroy(&m_mutex);
     }
 
     void init(const char *file_name, const char *file_path, 

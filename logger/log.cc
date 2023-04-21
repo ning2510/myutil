@@ -146,6 +146,12 @@ AsyncLogger::AsyncLogger(const char *file_name, const char *file_path, int max_s
     int rt = sem_init(&m_sem, 0, 0);
     assert(rt == 0);
 
+    rt = ::pthread_mutex_init(&m_mutex, nullptr);
+    assert(rt == 0);
+
+    rt = ::pthread_cond_init(&m_cond, nullptr);
+    assert(rt == 0);
+
     rt = ::pthread_create(&m_thread, nullptr, &AsyncLogger::execute, this);
     assert(rt == 0);
 
